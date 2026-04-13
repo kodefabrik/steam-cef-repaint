@@ -1,0 +1,8 @@
+{
+  "name": "Steam CEF Repaint Fix",
+  "description": "Fixes Steam web content (store, library) going black when switching workspaces on Wayland. Forces a repaint by briefly minimizing and restoring the Steam window on workspace switch.",
+  "uuid": "steam-cef-repaint@kodefabrik.github.com",
+  "version": 1,
+  "shell-version": ["45", "46", "47", "48", "49"],
+  "url": "https://github.com/kodefabrik/steam-cef-repaint"
+}
