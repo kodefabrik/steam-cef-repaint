@@ -1,6 +1,7 @@
 import GLib from 'gi://GLib';
 
 let workspaceSwitchedSignal = null;
+let repaintTimeout = null;
 
 export default class SteamRepaintExtension {
     enable() {
@@ -15,6 +16,10 @@ export default class SteamRepaintExtension {
             global.workspace_manager.disconnect(workspaceSwitchedSignal);
             workspaceSwitchedSignal = null;
         }
+        if (repaintTimeout) {
+            GLib.source_remove(repaintTimeout);
+            repaintTimeout = null;
+        }
     }
 
     _repaintSteam() {
@@ -23,8 +28,9 @@ export default class SteamRepaintExtension {
         for (const win of windows) {
             if (win.get_wm_class()?.toLowerCase().includes('steam')) {
                 win.minimize();
-                GLib.timeout_add(GLib.PRIORITY_DEFAULT, 1, () => {
+                repaintTimeout = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 1, () => {
                     win.unminimize();
+                    repaintTimeout = null;
                     return GLib.SOURCE_REMOVE;
                 });
             }
