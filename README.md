@@ -6,7 +6,7 @@ A GNOME Shell extension that works around Steam CEF web surfaces going black on 
 
 Steam webhelper CEF surfaces go black on GNOME 49 / Wayland / openSUSE Tumbleweed when switching workspaces. Native Steam UI repaints correctly; only CEF-rendered web surfaces (store, library) go black. Maximize/minimize forces a repaint.
 
-Upstream bug report: https://github.com/ValveSoftware/steam-for-linux/issues/13090
+Upstream bug report: https://github.com/ValveSoftware/steam-for-linux/issues/10869
 
 ## Findings
 
