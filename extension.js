@@ -28,7 +28,7 @@ export default class SteamRepaintExtension {
         for (const win of windows) {
             if (win.get_wm_class()?.toLowerCase().includes('steam')) {
                 win.minimize();
-                repaintTimeout = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 1, () => {
+                repaintTimeout = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 30, () => {
                     win.unminimize();
                     repaintTimeout = null;
                     return GLib.SOURCE_REMOVE;
